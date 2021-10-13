@@ -1,0 +1,36 @@
+Napomena: za WTI nisam racunao miss ako se radi write jer bilo kako ne koristi kes za write ali moze da se nadoda miss += pristup - (hit + miss)  // za zadatak 1
+		pretpostavka da se koristi WTI - no write allocate
+1. 		 	P0				P1				P2	
+	Hit:	0				0				0	
+	Miss:	3				0				2	
+	Pristup:3				4				3	
+2. Da
+3. Da, za WTI je memorija uvek azurna, podatak dostavlja memorija.
+4. Ne
+5. Moze se koristiti WTI - write allocate protokol, nepotrebno je svaki put pisati direktno u memoriju nego samo kada moramo (inace pisati u kes), 
+	takodje podaci mogu da se dovlace iz drugih kes memorija ako su tu dostupni.
+
+6. U stanju S (shared), jer su samo citali podatke a nisu ih modifikovali.
+7. U stanju I (invalid), jer je P1 modifikovao podatak. Stanje je promenjeno da ne bi P0 koristio zastareli podatak.
+8. Kod MSI se blok A1 tek upisao u memoriju kada je bio izbacen, pisanje je odradjeno lokalno.
+9. U koraku 8, da bi P0 dohvatio azuran podatak prvo je moralo da se azurira u memoriji.
+
+10. U stanju E (exclusive) jer je jedini koji koristi taj blok, u koraku 2 prelazi u stanje S.
+11. Dostavlja se od kesa P1, u stanju S.
+12. Blok A1 se pise u memoriju jer je bio modifikovan a menjao ga je blok A3.
+13. P1 postavlja blok A2 u stanje S, i u isto vreme dostavlja podatak i azurira memoriju. Razresava se preko shared linije.
+
+14. U stanju M (modified), jer ga je modifikovao (?). Ostali procesori (kesevi) postavljaju dati blok u stanje I.
+15. Za P0 = I, P1 ga nema u kesu, za P2 je u stanju S. Memorija je azurna za blokove A0 i A1, a A2 i A3 nisu azurni jer ih je P1 modifikovao.
+16. U stanju S, jer se nalazi i u P1 pa je kao deljeno.
+17. Ne.
+
+18. P0,P2 = Sc, P1 = Sm. Podatak je kod svih procesora = 1.
+19. Azurira se podatak A1 jer se u koraku 6 on zamenjuje, A3 je azuran samo u P1.
+20. U stanju Sc.
+21. U stanu E. Ucitao se kao E jer ni jedan drugi kes nema taj podatak inace bi bio u stanju Sc.
+
+22. Stanje Sd (shared not dirty). Ekvivalent je Sc (shared clean) u DRAGON protokolu.
+23. Da, jer se P0 i P2 azurirali pa se azurirala i memorija.
+24. Azurirali su se memorija i P0 iz P1 za blok A2.
+25. Da, u stanju Sd (shared not dirty).
